@@ -34,14 +34,14 @@ def generate_answer(query):
     context = "\n\n".join([doc.page_content for doc in docs[:3]])
 
     messages = [
-        {"role": "system", "content": "You are a helpful assistant answering based on academic research."},
+        {"role": "system", "content": "You are a helpful assistant answering based on this one single phd research paper."},
         {"role": "user", "content": f"Answer the question using the context below.\n\nContext:\n{context}\n\nQuestion: {query}"}
     ]
 
     response = client.chat.completions.create(
         model="llama3-8b-8192",
         messages=messages,
-        temperature=0.5,
+        temperature=0.2,
         max_tokens=512,
     )
 
