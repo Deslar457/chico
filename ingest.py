@@ -6,7 +6,7 @@ from langchain_community.vectorstores import FAISS
 from langchain_community.embeddings import HuggingFaceEmbeddings
 import os
 
-# === Step 1: Load PDFs ===
+# === Step 1: Load PDFs =======
 pdf_folder = "data"
 pdf_files = [f for f in os.listdir(pdf_folder) if f.endswith(".pdf")]
 
