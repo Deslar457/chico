@@ -16,8 +16,8 @@ client = OpenAI(
 
 # === Page Layout ===
 st.set_page_config(page_title="Michele Research Assistant", layout="centered")
-st.title("📘 Chico: Research Q&A Tool")
-st.markdown("Ask a question about the document you've uploaded.")
+st.title("📘 Michele: PhD Tool")
+st.markdown("Ask a question about your PhD.")
 
 # === Load Vector Store ===
 @st.cache_resource
@@ -77,5 +77,5 @@ if query:
 # === Footer ===
 st.markdown("""---""")
 st.markdown(
-    "Chico uses RAG (Retrieval-Augmented Generation) over your local PDF to answer questions. Built with Streamlit, FAISS, HuggingFace, LangChain, and Groq."
+    "Michele app uses RAG (Retrieval-Augmented Generation)  to answer questions. Built with Streamlit, FAISS, HuggingFace, LangChain, and Groq."
 )
