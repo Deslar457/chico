@@ -48,7 +48,7 @@ def generate_answer(query):
     }
 ]
 
-git c
+
     response = client.chat.completions.create(
         model="llama3-8b-8192",
         messages=messages,
