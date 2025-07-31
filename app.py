@@ -15,7 +15,7 @@ client = OpenAI(
 )
 
 # === Page Layout ===
-st.set_page_config(page_title="Chico Research Assistant", layout="centered")
+st.set_page_config(page_title="Michele Research Assistant", layout="centered")
 st.title("📘 Chico: Research Q&A Tool")
 st.markdown("Ask a question about the document you've uploaded.")
 
@@ -34,9 +34,20 @@ def generate_answer(query):
     context = "\n\n".join([doc.page_content for doc in docs[:3]])
 
     messages = [
-        {"role": "system", "content": "You are a helpful assistant answering based on this one single phd research paper."},
-        {"role": "user", "content": f"Answer the question using the context below.\n\nContext:\n{context}\n\nQuestion: {query}"}
-    ]
+    {
+        "role": "system",
+        "content": (
+            "You are a helpful assistant. Only use the provided context to answer the question. "
+            "Do not use any external knowledge or assumptions. "
+            "If the answer is not in the context, say 'I don't know based on the provided document.'"
+        )
+    },
+    {
+        "role": "user",
+        "content": f"Context:\n{context}\n\nQuestion: {query}"
+    }
+]
+
 
     response = client.chat.completions.create(
         model="llama3-8b-8192",
