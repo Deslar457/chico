@@ -77,5 +77,5 @@ if query:
 # Footer 
 st.markdown("""---""")
 st.markdown(
-    "Michele's app was Built with Streamlit, FAISS, HuggingFace, LangChain, and Groq. it will answer basic questions about PhD but won't recognise tables, figures, titles "
+    "Michele's app was Built with Streamlit, FAISS, HuggingFace, LangChain, and Groq. it will answer basic questions about your PhD but won't recognise tables, figures or titles "
 )
