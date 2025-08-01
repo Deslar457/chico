@@ -12,7 +12,7 @@ pdf_files = [f for f in os.listdir(pdf_folder) if f.endswith(".pdf")]
 
 documents = []
 for file in pdf_files:
-    loader = UnstructuredPDFLoader(os.path.join(pdf_folder, file))
+    loader = PyPDFLoader(os.path.join(pdf_folder, file))
     documents.extend(loader.load())
 
 # === Step 2: Chunk the text ===
