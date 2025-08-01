@@ -6,7 +6,7 @@ from langchain_community.embeddings import HuggingFaceEmbeddings
 from openai import OpenAI
 import os
 
-# === Load Groq API Key from Streamlit secrets ===
+# Load Groq API
 api_key = os.getenv("GROQ_API_KEY", st.secrets.get("GROQ_API_KEY"))
 
 client = OpenAI(
@@ -14,12 +14,12 @@ client = OpenAI(
     base_url="https://api.groq.com/openai/v1"
 )
 
-# === Page Layout ===
+#  Page Layout
 st.set_page_config(page_title="Michele Research Assistant", layout="centered")
 st.title("📘 Michele: PhD Tool")
 st.markdown("Ask a question about your PhD.")
 
-# === Load Vector Store ===
+# Load Vector Store 
 @st.cache_resource
 def load_retriever():
     embedding_model = HuggingFaceEmbeddings(model_name="sentence-transformers/all-MiniLM-L6-v2")
@@ -28,7 +28,7 @@ def load_retriever():
 
 retriever = load_retriever()
 
-# === Generate Answer ===
+# Generate Answer 
 def generate_answer(query):
     docs = retriever.invoke(query)
     context = "\n\n".join([doc.page_content for doc in docs[:3]])
@@ -58,7 +58,7 @@ def generate_answer(query):
 
     return response.choices[0].message.content.strip(), docs
 
-# === Interface ===
+#Interface 
 query = st.text_input("💬 Ask your question:")
 if query:
     with st.spinner("Thinking..."):
@@ -74,7 +74,7 @@ if query:
         st.markdown(doc.page_content[:400] + "...")
 
 
-# === Footer ===
+# Footer 
 st.markdown("""---""")
 st.markdown(
     "Michele's app was Built with Streamlit, FAISS, HuggingFace, LangChain, and Groq. it will answer basic questions about PhD but won't recognise tables, figures, titles "
